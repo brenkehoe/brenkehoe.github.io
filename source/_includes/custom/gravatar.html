@@ -1,0 +1,14 @@
+{% if site.gravatar_email %}
+<div class="profilepic">
+	{% if site.email_md5 %}
+	<img src="http://www.gravatar.com/avatar/{{ site.gravatar_email_md5 }}{% if site.gravatar_size %}?s={{ site.gravatar_size }}{% endif %}" alt="Profile Picture" {% if site.gravatar_size %}style="width: {{ site.gravatar_size }}px;"{% endif %} />
+	{% else %}
+	<script src="{{ root_url }}/javascripts/libs/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("{{ site.gravatar_email | downcase }}") + "{% if site.gravatar_size %}?s={{ site.gravatar_size }}{% endif %}' alt='Profile Picture' {% if site.gravatar_size %}style='width: {{ site.gravatar_size }}px;'{% endif %} />");
+		});
+	</script>
+	{% endif %}
+</div>
+{% endif %}

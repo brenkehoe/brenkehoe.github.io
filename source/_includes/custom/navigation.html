@@ -1,0 +1,28 @@
+<div id="main-nav">
+    <nav>
+        <ul>
+        	<li>
+        		{% if site.blog_index_asides.size %}
+					{% include_array blog_index_asides %}
+				{% else %}
+					{% include_array default_asides %}
+				{% endif %}
+        	</li>
+        	<li>
+        		<ul>
+					{% if site.personal_site_tag %}
+                    <li>{{ site.personal_site_tag }} - <a href="http://{{site.personal_site_url}}" target="_blank">{{site.personal_site_title}}</a>
+					{% endif %}
+        			<li>Github - <a href="http://www.github.com/{{site.github_user}}" target="_blank">github.com/{{site.github_user}}</a></li>
+                    <li>Twitter - <a href="http://www.twitter.com/{{site.twitter_user}}" target="_blank">@{{site.twitter_user}}</a></li>
+                    <li>Email - <a id="email-link" href="mailto:{{site.email}}" target="_blank">{{site.email}}</a></li>
+					<script type="text/javascript">
+						$(function () {
+							$('#email-link').text('{{site.email}}'.replace('@', ' at '))
+						});
+					</script>
+        		</ul>
+        	</li>
+        </ul>
+    </nav>
+</div>
